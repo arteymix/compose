@@ -103,7 +103,7 @@ namespace Compose.HTML5
 	public string bdi        (string[] attributes = {}, ...) { return elementv ("bdi",        attributes, va_list ()); }
 	public string bdo        (string[] attributes = {}, ...) { return elementv ("bdo",        attributes, va_list ()); }
 	public string blockquote (string[] attributes = {}, ...) { return elementv ("blockquote", attributes, va_list ()); }
-	public string body       (string[] attributes = {}, ...) { return elementv ("body ",      attributes, va_list ()); }
+	public string body       (string[] attributes = {}, ...) { return elementv ("body",       attributes, va_list ()); }
 
 	public string br (string[] attributes = {})
 	{
