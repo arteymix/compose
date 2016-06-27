@@ -59,23 +59,36 @@ namespace Compose.HTML5
 			}
 		}
 
-		var child = children.arg<string> ();
+		el.append (">");
 
-		if (child == null)
+		string child;
+		for (child = children.arg<string> (); child != null; child = children.arg<string> ())
 		{
-			// TODO: check for auto-closing tags (e.g. '<img>', '<input>')
-			el.append ("/>");
+			el.append (child);
 		}
-		else
+
+		switch (tag)
 		{
-			el.append_c ('>');
-
-			for (; child != null; child = children.arg<string> ())
-			{
-				el.append (child);
-			}
-
-			el.append_printf ("</%s>", encode_entities (tag));
+			case "area":
+			case "base":
+			case "br":
+			case "col":
+			case "command":
+			case "embed":
+			case "hr":
+			case "img":
+			case "input":
+			case "keygen":
+			case "link":
+			case "metar":
+			case "paramr":
+			case "sourcer":
+			case "trackr":
+			case "wbr":
+				break;
+			default:
+				el.append_printf ("</%s>", encode_entities (tag));
+				break;
 		}
 
 		return el.str;
