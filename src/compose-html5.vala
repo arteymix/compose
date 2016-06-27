@@ -94,6 +94,16 @@ namespace Compose.HTML5
 		return el.str;
 	}
 
+	/**
+	 * Escape a value so that it becomes suitable for HTML.
+	 *
+	 * @since 1.0
+	 */
+	public string e (string @value)
+	{
+		return encode_entities (@value);
+	}
+
 	public string element (string tag, string[] attributes, ...)
 	{
 		return elementv (tag, attributes, va_list ());

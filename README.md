@@ -50,6 +50,15 @@ Also, Compose will automatically escape data where it has to be.
 Every HTML5 elements can be found within the `Compose.HTML5` namespace like
 shown in the first code example.
 
+To escape values, which is not done by default if HTML is expected, use the `e`
+helper.
+
+```vala
+a (e (post.url), e (post.title));
+```
+
+Note that all attributes are already escaped.
+
 Support for other format will be included if the project happen to become
 successful.
 
