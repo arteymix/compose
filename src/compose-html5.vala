@@ -101,8 +101,7 @@ namespace Compose.HTML5
 
 	public string a (string href, string[] attributes = {}, ...)
 	{
-		Environ.set_variable (attributes, "href", href, true);
-		return elementv ("a", attributes, va_list ());
+		return elementv ("a", Environ.set_variable (attributes, "href", href, true), va_list ());
 	}
 
 	public string abbr       (string[] attributes = {}, ...) { return elementv ("abbr",       attributes, va_list ()); }
@@ -123,10 +122,9 @@ namespace Compose.HTML5
 		return element ("br", attributes);
 	}
 
-	public string button (string name, string content = "", string[] attributes = {})
+	public string button (string name, string[] attributes = {}, string content = "")
 	{
-		Environ.set_variable (attributes, "name", name, true);
-		return element ("button", attributes, encode_entities (content));
+		return element ("button", Environ.set_variable (attributes, "name", name, true), encode_entities (content));
 	}
 
 	public string canvas   (string[] attributes = {}, ...) { return elementv ("canvas",   attributes, va_list ()); }
@@ -153,8 +151,7 @@ namespace Compose.HTML5
 
 	public string embed (string src, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "src", src);
-		return element ("embed", attributes);
+		return element ("embed", Environ.set_variable (attributes, "src", src));
 	}
 
 	public string fieldset   (string[] attributes = {}, ...) { return elementv ("fieldset",   attributes, va_list ()); }
@@ -183,18 +180,17 @@ namespace Compose.HTML5
 
 	public string img (string src, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "src", src, true);
-		return element ("img", attributes);
+		return element ("img", Environ.set_variable (attributes, "src", src, true));
 	}
 
 	public string input (string name, string? @value = null, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "name",  name,   true);
+		var _attributes = Environ.set_variable (attributes, "name",  name,   true);
 		if (@value != null)
 		{
-			Environ.set_variable (attributes, "value", @value, true);
+			_attributes = Environ.set_variable (_attributes, "value", @value, true);
 		}
-		return element ("input", attributes);
+		return element ("input", _attributes);
 	}
 
 	public string ins    (string[] attributes = {}, ...) { return elementv ("ins",    attributes, va_list ()); }
@@ -203,14 +199,13 @@ namespace Compose.HTML5
 
 	public string label (string @for, string[] attributes = {}, ...)
 	{
-		Environ.set_variable (attributes, "for", @for, true);
-		return elementv ("label",  attributes, va_list ());
+		return elementv ("label", Environ.set_variable (attributes, "for", @for, true), va_list ());
 	}
 
 	public string link (string href, string rel = "stylesheet", string[] attributes = {}, ...)
 	{
-		Environ.set_variable (attributes, "href", href, true);
-		Environ.set_variable (attributes, "rel",  rel,  true);
+		var _attributes = Environ.set_variable (attributes, "href", href, true);
+		_attributes     = Environ.set_variable (_attributes, "rel",  rel,  true);
 		return elementv ("link", attributes, va_list ());
 	}
 
@@ -231,25 +226,23 @@ namespace Compose.HTML5
 	public string ol       (string[] attributes = {}, ...) { return elementv ("ol",       attributes, va_list ()); }
 	public string optgroup (string[] attributes = {}, ...) { return elementv ("optgroup", attributes, va_list ()); }
 
-	public string option (string @value, string? content = null, string[] attributes = {})
+	public string option (string @value, string[] attributes = {}, string? content = null)
 	{
-		Environ.set_variable (attributes, "value", @value, true);
-		return element ("option", attributes, encode_entities (content ?? @value));
+		return element ("option", Environ.set_variable (attributes, "value", @value, true), encode_entities (content ?? @value));
 	}
 
 	public string output (string name, string[] attributes = {}, ...)
 	{
-		Environ.set_variable (attributes, "name", name, true);
-		return elementv ("output",  attributes, va_list ());
+		return elementv ("output", Environ.set_variable (attributes, "name", name, true), va_list ());
 	}
 
 	public string p (string[] attributes = {}, ...) { return elementv ("p", attributes, va_list ()); }
 
 	public string param (string name, string @value, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "name",  name,   true);
-		Environ.set_variable (attributes, "value", @value, true);
-		return element ("param", attributes);
+		var _attributes = Environ.set_variable (attributes, "name",  name,   true);
+		_attributes = Environ.set_variable (_attributes, "value", @value, true);
+		return element ("param", _attributes);
 	}
 
 	public string pre (string content, string[] attributes = {})
@@ -264,21 +257,24 @@ namespace Compose.HTML5
 	public string ruby     (string[] attributes = {}, ...) { return elementv ("ruby",     attributes, va_list ()); }
 	public string s        (string[] attributes = {}, ...) { return elementv ("s",        attributes, va_list ()); }
 	public string samp     (string[] attributes = {}, ...) { return elementv ("samp",     attributes, va_list ()); }
-	public string script   (string[] attributes = {}, ...) { return elementv ("script",   attributes, va_list ()); }
+
+	public string script (string[] attributes = {}, string content = "")
+	{
+		return element ("script", attributes, content);
+	}
+
 	public string section  (string[] attributes = {}, ...) { return elementv ("section",  attributes, va_list ()); }
 
 	public string select (string name, string[] attributes = {}, ...)
 	{
-		Environ.set_variable (attributes, "name", name, true);
-		return elementv ("select", attributes, va_list ());
+		return elementv ("select", Environ.set_variable (attributes, "name", name, true), va_list ());
 	}
 
 	public string small (string[] attributes = {}, ...) { return elementv ("small", attributes, va_list ()); }
 
 	public string source (string src, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "src", src, true);
-		return element ("source", attributes);
+		return element ("source", Environ.set_variable (attributes, "src", src, true));
 	}
 
 	public string span   (string[] attributes = {}, ...) { return elementv ("span",   attributes, va_list ()); }
@@ -296,10 +292,9 @@ namespace Compose.HTML5
 	public string tbody   (string[] attributes = {}, ...) { return elementv ("tbody",   attributes, va_list ()); }
 	public string td      (string[] attributes = {}, ...) { return elementv ("td",      attributes, va_list ()); }
 
-	public string textarea (string name, string @value = "", string[] attributes = {})
+	public string textarea (string name, string[] attributes = {}, string @value = "")
 	{
-		Environ.set_variable (attributes, "name", name, true);
-		return element ("textarea", attributes, encode_entities (@value));
+		return element ("textarea", Environ.set_variable (attributes, "name", name, true), encode_entities (@value));
 	}
 
 	public string tfoot (string[] attributes = {}, ...) { return elementv ("tfoot", attributes, va_list ()); }
@@ -316,8 +311,7 @@ namespace Compose.HTML5
 
 	public string track (string src, string[] attributes = {})
 	{
-		Environ.set_variable (attributes, "src", src, true);
-		return element ("track", attributes);
+		return element ("track", Environ.set_variable (attributes, "src", src, true));
 	}
 
 	public string u     (string[] attributes = {}, ...) { return elementv ("u",     attributes, va_list ()); }

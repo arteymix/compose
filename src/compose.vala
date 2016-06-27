@@ -23,8 +23,8 @@
  *
  * 1. mandatory attributes as parameters
  * 2. mandatory attributes with default values
- * 3. mandatory text content if appliable
  * 2. optional attributes as a null-terminated string array of 'key=value' entries
+ * 3. mandatory children if appliable
  * 3. children as a varidic argument if appliable
  *
  * @since 1.0
