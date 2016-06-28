@@ -132,11 +132,7 @@ namespace Compose.HTML5
 		return element ("br", attributes);
 	}
 
-	public string button (string name, string[] attributes = {}, string content = "")
-	{
-		return element ("button", Environ.set_variable (attributes, "name", name, true), encode_entities (content));
-	}
-
+	public string button   (string[] attributes = {}, ...) { return elementv ("button",   attributes, va_list ()); }
 	public string canvas   (string[] attributes = {}, ...) { return elementv ("canvas",   attributes, va_list ()); }
 	public string caption  (string[] attributes = {}, ...) { return elementv ("caption",  attributes, va_list ()); }
 	public string cite     (string[] attributes = {}, ...) { return elementv ("cite",     attributes, va_list ()); }
