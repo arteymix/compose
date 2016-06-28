@@ -85,7 +85,7 @@ evaluation.
 To help keep track of the current index an array is used, a counter is passed
 as first argument.
 
-```
+```vala
 string[] @values = {"Jim", "John"};
 
 take<string> ((i)    => { return i >= @values.length ? null : @values[i]; },
