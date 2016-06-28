@@ -212,7 +212,7 @@ namespace Compose.HTML5
 	{
 		var _attributes = Environ.set_variable (attributes, "href", href, true);
 		_attributes     = Environ.set_variable (_attributes, "rel",  rel,  true);
-		return elementv ("link", attributes, va_list ());
+		return elementv ("link", _attributes, va_list ());
 	}
 
 	public string main (string[] attributes = {}, ...) { return elementv ("main", attributes, va_list ()); }
