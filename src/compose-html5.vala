@@ -80,10 +80,10 @@ namespace Compose.HTML5
 			case "input":
 			case "keygen":
 			case "link":
-			case "metar":
-			case "paramr":
-			case "sourcer":
-			case "trackr":
+			case "meta":
+			case "param":
+			case "source":
+			case "track":
 			case "wbr":
 				break;
 			default:
