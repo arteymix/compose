@@ -315,7 +315,7 @@ namespace Compose.HTML5
 
 	public string title (string content, string[] attributes = {})
 	{
-		return element ("title", attributes, content);
+		return element ("title", attributes, encode_entities (content));
 	}
 
 	public string tr (string[] attributes = {}, ...) { return elementv ("tr", attributes, va_list ()); }
