@@ -124,14 +124,19 @@ namespace Compose.HTML5
 		return elementv ("a", Environ.set_variable (attributes, "href", href, true), va_list ());
 	}
 
-	public string abbr       (string[] attributes = {}, ...) { return elementv ("abbr",       attributes, va_list ()); }
-	public string address    (string[] attributes = {}, ...) { return elementv ("address",    attributes, va_list ()); }
-	public string area       (string[] attributes = {}, ...) { return elementv ("area",       attributes, va_list ()); }
-	public string article    (string[] attributes = {}, ...) { return elementv ("article",    attributes, va_list ()); }
-	public string aside      (string[] attributes = {}, ...) { return elementv ("aside",      attributes, va_list ()); }
-	public string audio      (string[] attributes = {}, ...) { return elementv ("audio",      attributes, va_list ()); }
-	public string b          (string[] attributes = {}, ...) { return elementv ("b",          attributes, va_list ()); }
-	public string @base      (string[] attributes = {}, ...) { return elementv ("base",       attributes, va_list ()); }
+	public string abbr    (string[] attributes = {}, ...) { return elementv ("abbr",    attributes, va_list ()); }
+	public string address (string[] attributes = {}, ...) { return elementv ("address", attributes, va_list ()); }
+	public string area    (string[] attributes = {}, ...) { return elementv ("area",    attributes, va_list ()); }
+	public string article (string[] attributes = {}, ...) { return elementv ("article", attributes, va_list ()); }
+	public string aside   (string[] attributes = {}, ...) { return elementv ("aside",   attributes, va_list ()); }
+	public string audio   (string[] attributes = {}, ...) { return elementv ("audio",   attributes, va_list ()); }
+	public string b       (string[] attributes = {}, ...) { return elementv ("b",       attributes, va_list ()); }
+
+	public string @base (string href, string[] attributes = {})
+	{
+		return element ("base", Environ.set_variable (attributes, "href", href, true));
+	}
+
 	public string bdi        (string[] attributes = {}, ...) { return elementv ("bdi",        attributes, va_list ()); }
 	public string bdo        (string[] attributes = {}, ...) { return elementv ("bdo",        attributes, va_list ()); }
 	public string blockquote (string[] attributes = {}, ...) { return elementv ("blockquote", attributes, va_list ()); }
@@ -184,11 +189,15 @@ namespace Compose.HTML5
 	public string head       (string[] attributes = {}, ...) { return elementv ("head",       attributes, va_list ()); }
 	public string header     (string[] attributes = {}, ...) { return elementv ("header",     attributes, va_list ()); }
 	public string hgroup     (string[] attributes = {}, ...) { return elementv ("hgroup",     attributes, va_list ()); }
-	public string hr         (string[] attributes = {}, ...) { return elementv ("hr",         attributes, va_list ()); }
 
-	public string html (string[] attributes, ...)
+	public string hr (string[] attributes = {})
 	{
-		return "<!DOCTYPE html>%s".printf (elementv ("html", attributes, va_list ()));
+		return element ("hr", attributes);
+	}
+
+	public string html (string[] attributes, string head, string body)
+	{
+		return "<!DOCTYPE html>%s".printf (element ("html", attributes, head, body));
 	}
 
 	public string i      (string[] attributes = {}, ...) { return elementv ("i",      attributes, va_list ()); }
@@ -209,9 +218,13 @@ namespace Compose.HTML5
 		return element ("input", _attributes);
 	}
 
-	public string ins    (string[] attributes = {}, ...) { return elementv ("ins",    attributes, va_list ()); }
-	public string kdb    (string[] attributes = {}, ...) { return elementv ("kdb",    attributes, va_list ()); }
-	public string keygen (string[] attributes = {}, ...) { return elementv ("keygen", attributes, va_list ()); }
+	public string ins (string[] attributes = {}, ...) { return elementv ("ins", attributes, va_list ()); }
+	public string kdb (string[] attributes = {}, ...) { return elementv ("kdb", attributes, va_list ()); }
+
+	public string keygen (string name, string[] attributes = {})
+	{
+		return element ("keygen", Environ.set_variable (attributes, "name", name, true));
+	}
 
 	public string label (string @for, string[] attributes = {}, ...)
 	{
