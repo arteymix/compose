@@ -26,6 +26,11 @@ namespace Compose.HTML5
 {
 	private string encode_entities (string inbuf)
 	{
+		if (inbuf.length == 0)
+		{
+			return inbuf;
+		}
+
 		char[] encoded     = new char[inbuf.length * 4];
 		int    encoded_len = inbuf.length * 4;
 		int    inbuf_len   = inbuf.length;
