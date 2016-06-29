@@ -109,6 +109,11 @@ namespace Compose.HTML5
 		return encode_entities (@value);
 	}
 
+	/**
+	 * Produce an arbitrary HTML element.
+	 *
+	 * @since 1.0
+	 */
 	public string element (string tag, string[] attributes, ...)
 	{
 		return elementv (tag, attributes, va_list ());
