@@ -59,11 +59,14 @@ namespace Compose
 	 * If the condition is met, evaluate the first callback, otherwise evaluate
 	 * the second.
 	 *
+	 * The second callback can be left 'null', in which case nothing will be
+	 * rendered.
+	 *
 	 * @since 1.0
 	 */
-	public string when (bool condition, owned EvaluateCallback then, owned EvaluateCallback otherwise)
+	public string when (bool condition, owned EvaluateCallback then, owned EvaluateCallback? otherwise = null)
 	{
-		return condition ? then () : otherwise ();
+		return condition ? then () : otherwise == null ? "" : otherwise ();
 	}
 
 	/**
