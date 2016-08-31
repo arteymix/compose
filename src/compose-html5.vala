@@ -231,6 +231,8 @@ namespace Compose.HTML5
 		return elementv ("label", Environ.set_variable (attributes, "for", @for, true), va_list ());
 	}
 
+	public string li (string[] attributes = {}, ...) { return elementv ("li", attributes, va_list ()); }
+
 	public string link (string href, string rel = "stylesheet", string[] attributes = {}, ...)
 	{
 		var _attributes = Environ.set_variable (attributes, "href", href, true);
