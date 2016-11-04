@@ -119,9 +119,13 @@ namespace Compose.HTML5
 		return elementv (tag, attributes, va_list ());
 	}
 
-	public string a (string href, string[] attributes = {}, ...)
+	public string a (string? href, string[] attributes = {}, ...)
 	{
-		return elementv ("a", Environ.set_variable (attributes, "href", href, true), va_list ());
+		var _attributes = attributes;
+		if (href != null) {
+			_attributes = Environ.set_variable (attributes, "href", href, true);
+		}
+		return elementv ("a", _attributes, va_list ());
 	}
 
 	public string abbr    (string[] attributes = {}, ...) { return elementv ("abbr",    attributes, va_list ()); }
