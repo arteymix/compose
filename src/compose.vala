@@ -88,4 +88,12 @@ namespace Compose
 
 		return builder.str;
 	}
+
+	/**
+	 * @since 1.0
+	 */
+	public string take_slist<T> (SList<T> list, owned EvaluateWithValueCallback<T> evaluate)
+	{
+		return take ((i) => { return list.nth_data (i); }, (owned) evaluate);
+	}
 }
