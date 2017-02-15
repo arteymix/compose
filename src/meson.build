@@ -1,11 +1,10 @@
 compose_lib = library('compose-1.0', ['compose.vala', 'compose-html5.vala'],
                       dependencies: [glib, xml],
+                      vala_header: 'compose.h',
                       install: true)
 
 compose = declare_dependency(link_with: compose_lib,
                              include_directories: include_directories('.'))
-
-install_headers(meson.current_build_dir() + '/compose.h', subdir: 'compose-1.0')
 
 pkgconfig = import('pkgconfig')
 pkgconfig.generate(requires: 'glib-2.0',

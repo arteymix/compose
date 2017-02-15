@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir -p ${DESTDIR}${MESON_INSTALL_PREFIX}/share/vala/vapi
+mkdir -p ${MESON_INSTALL_DESTDIR_PREFIX}/include/compose-1.0
+install ${MESON_BUILD_ROOT}/src/compose.h ${MESON_INSTALL_DESTDIR_PREFIX}/include/compose-1.0
 
-install -m 0644                              \
-    ${MESON_BUILD_ROOT}/src/compose.vapi \
-    ${DESTDIR}${MESON_INSTALL_PREFIX}/share/vala/vapi
+mkdir -p ${MESON_INSTALL_DESTDIR_PREFIX}/share/vala/vapi
+install ${MESON_BUILD_ROOT}/src/compose-1.0.vapi ${MESON_INSTALL_DESTDIR_PREFIX}/share/vala/vapi
