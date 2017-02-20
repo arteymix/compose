@@ -94,6 +94,6 @@ namespace Compose
 	 */
 	public string take_slist<T> (SList<T> list, owned EvaluateWithValueCallback<T> evaluate)
 	{
-		return take ((i) => { return list.nth_data (i); }, (owned) evaluate);
+		return take<T> ((i) => { return list.nth_data (i); }, (owned) evaluate);
 	}
 }
