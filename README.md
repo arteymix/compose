@@ -19,8 +19,8 @@ app.get ("/users", () => {
       body ({"lang=en"},
         section ({"class=users"},
           h2 ({}, "Users"),
-          take<User> (()     => { return users.next (); },
-                      (user) => { return p (user.username) }))
+          take<User> (()     => users.next (),
+                      (user) => p (user.username)))
       )
     )
   );
