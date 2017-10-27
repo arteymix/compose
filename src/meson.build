@@ -1,10 +1,11 @@
 compose_lib = library('compose-1.0', ['compose.vala', 'compose-html5.vala'],
-                      dependencies: [glib, xml],
+                      dependencies: [glib_dep, libxml_dep],
                       vala_header: 'compose.h',
-                      install: true)
+                      install: true,
+                      install_dir: [true, true, true])
 
-compose = declare_dependency(link_with: compose_lib,
-                             include_directories: include_directories('.'))
+compose_dep = declare_dependency(link_with: compose_lib,
+                                 include_directories: include_directories('.'))
 
 pkgconfig = import('pkgconfig')
 pkgconfig.generate(requires: 'glib-2.0',
